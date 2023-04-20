@@ -56,22 +56,11 @@ export const config = {
 		},
 		type: 'object',
 	},
-	pythonPath: {
+	fisheryPath: {
 		default: '',
 		description:
-			'Leave empty to use python from the PATH environment variable.',
+			'Leave empty to use fishery from the PATH environment variable.',
 		type: 'string',
-	},
-	samplesDirectory: {
-		default: '',
-		description:
-			'Use an alternate directory for looking up samples (restart FoxDot session to take effect).',
-		type: 'string',
-	},
-	useSC3Plugins: {
-		default: false,
-		description: 'Use SC3 plugins (restart FoxDot session to take effect).',
-		type: 'boolean',
 	},
 };
 

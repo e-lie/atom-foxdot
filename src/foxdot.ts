@@ -12,27 +12,14 @@ export class FoxDot extends EventEmitter {
 
 		this.logger = logger;
 
-		const pythonPath =
-			(atom.config.get('foxdot.pythonPath') as string) || 'python';
+		const fisheryPath =
+			(atom.config.get('foxdot.fisheryPath') as string) || 'fishery';
 		const samplesDirectory = atom.config.get(
 			'foxdot.samplesDirectory'
 		) as string;
 
-		let command = ['-m', 'FoxDot', '--pipe'];
-		if (samplesDirectory !== '') {
-			logger?.service(`Using samples from ${samplesDirectory}.`, false);
-			command = command.concat(['-d', samplesDirectory]);
-		}
-
 		try {
-			this.childProcess = spawn(pythonPath, command, {
-				env: {
-					...process.env,
-					SC3_PLUGINS: (atom.config.get('foxdot.useSC3Plugins') as boolean)
-						? '1'
-						: undefined,
-				},
-			});
+			this.childProcess = spawn(fisheryPath, [], {});
 
 			this.childProcess.stdout.on('data', (data) => {
 				logger?.stdout(data);
